@@ -1,4 +1,5 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, Button } from 'react-native';
+import {generateRsaKeyPair} from "compass-expo-android-utils"
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -46,6 +47,11 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+      <Button title='CP generateRsaKeyPair' onPress={async () => {
+        const res = await generateRsaKeyPair();
+        console.log('generateRsaKeyPair res: ', res?.publicKey);
+
+      }} />
     </ParallaxScrollView>
   );
 }
